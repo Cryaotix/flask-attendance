@@ -5,17 +5,12 @@ from sqlalchemy import ForeignKey, desc, asc
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 from time import sleep
-from oauth2client.service_account import ServiceAccountCredentials
 from multiprocessing import Process
-# from flask_ngrok import run_with_ngrok
 import pandas as pd
 import csv
-import uuid
 import psutil
 import os
-import webbrowser
 import subprocess
-import gspread
 
 # path = r'C:\IPFS\file'
 # if not os.path.exists(path):
