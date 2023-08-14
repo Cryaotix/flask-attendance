@@ -11,6 +11,8 @@ import csv
 import psutil
 import os
 import subprocess
+import socket
+import netifaces as nif
 
 # path = r'C:\IPFS\file'
 # if not os.path.exists(path):
@@ -326,6 +328,22 @@ def isConnected2():
         return redirect('/')
     except:
         return redirect('/login')
+
+def mac_for_ip():
+    hostname=socket.gethostname()   
+    IPAddr=socket.gethostbyname(hostname)
+    for i in nif.interfaces():
+        addrs = nif.ifaddresses(i)
+        try:
+            if_mac = addrs[nif.AF_LINK][0]['addr']
+            if_ip = addrs[nif.AF_INET][0]['addr']
+            # print(if_ip, if_mac)
+        except (IndexError, KeyError): #ignore ifaces that dont have MAC or IP
+            if_mac = if_ip = None
+        if if_ip == IPAddr:
+            return if_mac
+    return None
+
     
 if __name__ == '__main__':
     application = app
