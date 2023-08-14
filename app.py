@@ -84,7 +84,7 @@ def register_submit():
 
 @app.route('/login')
 def login():
-    return render_template('login.html', mac = get_mac_address())
+    return render_template('login.html', mac = ip_for_mac())
 
 @app.route('/login-submit', methods = ['POST'])
 def login_submit():
