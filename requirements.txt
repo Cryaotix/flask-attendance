@@ -11,6 +11,6 @@ pandas==1.5.2
 psutil==5.9.4
 SQLAlchemy==1.4.42
 psycopg2-binary==2.9.5
-manimce==0.11.0
+manimce==0.11.0.post2
 manimlib==0.2.0
 netifaces==0.11.0
