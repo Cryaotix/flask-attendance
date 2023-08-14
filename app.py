@@ -10,6 +10,7 @@ import pandas as pd
 import csv
 import psutil
 import os
+import uuid
 import subprocess
 import socket
 import netifaces as nif
@@ -84,7 +85,8 @@ def register_submit():
 
 @app.route('/login')
 def login():
-    return render_template('login.html', mac = mac_for_ip())
+    res = ':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff) for ele in range(0,8*6,8)][::-1])
+    return render_template('login.html', mac = res)
 
 @app.route('/login-submit', methods = ['POST'])
 def login_submit():
