@@ -348,6 +348,12 @@ def mac_for_ip():
         #     return if_mac
     return res
 
+from flask import jsonify
+
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    return jsonify({'ip': request.remote_addr}), 200
+
     
 if __name__ == '__main__':
     application = app
